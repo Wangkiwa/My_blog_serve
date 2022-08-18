@@ -32,10 +32,15 @@ module.exports.followUser = async (req, res, next) => {
       // 没关注
       user.follow.push(username)
       user.save()
+      return res.send({
+        user,
+        msg: "关注用户成功！",
+        status: 200,
+      })
     }
     res.send({
       user,
-      msg: "关注用户成功！",
+      msg: "已关注用户！",
       status: 200,
     })
   } catch (error) {
